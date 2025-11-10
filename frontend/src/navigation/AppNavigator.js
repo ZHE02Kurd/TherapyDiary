@@ -16,6 +16,8 @@ import HomeScreen from '../screens/HomeScreen';
 import DiaryScreen from '../screens/DiaryScreen';
 import ActivitiesScreen from '../screens/ActivitiesScreen';
 import ProfileScreen from '../screens/ProfileScreen';
+import DiaryEntryDetail from '../screens/DiaryEntryDetail';
+import AnalyticsScreen from '../screens/AnalyticsScreen';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -79,6 +81,14 @@ const MainTabs = () => {
         }}
       />
       <Tab.Screen 
+        name="Analytics" 
+        component={AnalyticsScreen}
+        options={{
+          tabBarLabel: 'Analytics',
+          title: 'Mood Analytics',
+        }}
+      />
+      <Tab.Screen 
         name="Profile" 
         component={ProfileScreen}
         options={{
@@ -103,7 +113,18 @@ const AppNavigator = () => {
 
   return (
     <NavigationContainer>
-      {isAuthenticated ? <MainTabs /> : <AuthStack />}
+      {isAuthenticated ? (
+        <Stack.Navigator screenOptions={{ headerShown: false }}>
+          <Stack.Screen name="Main" component={MainTabs} />
+          <Stack.Screen
+            name="DiaryDetail"
+            component={DiaryEntryDetail}
+            options={{ headerShown: true, title: 'Entry Detail' }}
+          />
+        </Stack.Navigator>
+      ) : (
+        <AuthStack />
+      )}
     </NavigationContainer>
   );
 };

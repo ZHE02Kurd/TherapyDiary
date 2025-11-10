@@ -42,6 +42,11 @@ export const API_ENDPOINTS = {
   ACTIVITIES_BY_CATEGORY: (category) => `/activities/category/${category}`,
   ACTIVITIES_BY_DIFFICULTY: (difficulty) => `/activities/difficulty/${difficulty}`,
   ACTIVITIES_RANK: (id) => `/activities/${id}/rank`,
+  
+  // Mood
+  MOOD: '/mood',
+  MOOD_BY_DATE: (date) => `/mood/${date}`,
+  MOOD_STATS: '/mood/stats/summary',
 };
 
 // App Settings

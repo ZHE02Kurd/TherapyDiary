@@ -296,4 +296,37 @@ export const activityService = {
   },
 };
 
+// Mood Service
+export const moodService = {
+  /**
+   * Get mood logs for a date range
+   * @param {Object} params - Query parameters (startDate, endDate, days)
+   * @returns {Promise} Mood logs with statistics
+   */
+  getMoodLogs: async (params = {}) => {
+    const response = await api.get(API_ENDPOINTS.MOOD, { params });
+    return response.data;
+  },
+
+  /**
+   * Get mood log for specific date
+   * @param {string} date - Date in YYYY-MM-DD format
+   * @returns {Promise} Mood log for the date
+   */
+  getMoodLogByDate: async (date) => {
+    const response = await api.get(API_ENDPOINTS.MOOD_BY_DATE(date));
+    return response.data;
+  },
+
+  /**
+   * Get mood statistics summary
+   * @param {number} days - Number of days to look back (default: 30)
+   * @returns {Promise} Mood statistics and trends
+   */
+  getMoodStats: async (days = 30) => {
+    const response = await api.get(API_ENDPOINTS.MOOD_STATS, { params: { days } });
+    return response.data;
+  },
+};
+
 export default api;

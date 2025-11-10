@@ -19,6 +19,7 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { diaryService } from '../services/api';
 import { APP_SETTINGS } from '../constants/config';
@@ -44,6 +45,7 @@ const DiaryScreen = () => {
     notes: '',
   });
   const [isSaving, setIsSaving] = useState(false);
+  const navigation = useNavigation();
 
   useEffect(() => {
     loadEntries();
@@ -169,8 +171,7 @@ const DiaryScreen = () => {
     <DiaryEntryCard
       entry={item}
       onPress={() => {
-        // TODO: Navigate to entry detail screen
-        Alert.alert('Entry Details', 'Detail view coming soon!');
+        navigation.navigate('DiaryDetail', { id: item._id });
       }}
       onDelete={() => handleDeleteEntry(item._id)}
     />
