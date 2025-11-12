@@ -1,10 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const moodController = require('../controllers/moodController');
-const { protect } = require('../middleware/auth');
+const authMiddleware = require('../middleware/auth');
 
 // Apply authentication middleware to all routes
-router.use(protect);
+router.use(authMiddleware);
 
 // GET /api/mood - Get mood logs for date range
 router.get('/', moodController.getMoodLogs);
