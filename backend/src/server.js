@@ -44,6 +44,8 @@ app.use('/api/auth', require('./routes/auth'));
 app.use('/api/diary', require('./routes/diary'));
 app.use('/api/activities', require('./routes/activities'));
 app.use('/api/mood', require('./routes/mood'));
+app.use('/api/sessions', require('./routes/sessions'));
+app.use('/api/daily-entries', require('./routes/dailyEntries'));
 // app.use('/api/schedule', require('./routes/schedule'));
 
 // Error handling middleware

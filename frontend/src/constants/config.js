@@ -12,10 +12,10 @@ const getApiUrl = () => {
   
   // Development URLs
   const LOCALHOST = 'http://localhost:3000';
-  const LOCAL_NETWORK = 'http://192.168.1.100:3000'; // Replace with your computer's IP
+  const LOCAL_NETWORK = 'http://172.31.161.144:3000'; // Your computer's IP address
   
-  // For now, default to localhost (works for iOS simulator and Android emulator)
-  return LOCALHOST;
+  // Use LOCAL_NETWORK for physical devices, LOCALHOST for emulators
+  return LOCAL_NETWORK;
 };
 
 export const API_URL = getApiUrl();

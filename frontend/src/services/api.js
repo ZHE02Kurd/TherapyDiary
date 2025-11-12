@@ -329,4 +329,101 @@ export const moodService = {
   },
 };
 
+// Session Service
+export const sessionService = {
+  /**
+   * Get session content by week number
+   * @param {number} weekNumber - Week number (1-5)
+   * @returns {Promise} Session content and user progress
+   */
+  getSession: async (weekNumber) => {
+    const response = await api.get(`/sessions/${weekNumber}`);
+    return response.data;
+  },
+
+  /**
+   * Mark session as read
+   * @param {number} weekNumber - Week number
+   * @returns {Promise}
+   */
+  markSessionRead: async (weekNumber) => {
+    const response = await api.post(`/sessions/${weekNumber}/complete`);
+    return response.data;
+  },
+
+  /**
+   * Get user progress
+   * @returns {Promise} User progress through the program
+   */
+  getUserProgress: async () => {
+    const response = await api.get('/sessions/user/progress');
+    return response.data;
+  },
+};
+
+// Daily Entry Service
+export const dailyEntryService = {
+  /**
+   * Create a new daily entry
+   * @param {Object} entryData - Entry data
+   * @returns {Promise} Created entry
+   */
+  createEntry: async (entryData) => {
+    const response = await api.post('/daily-entries', entryData);
+    return response.data;
+  },
+
+  /**
+   * Get all entries for a week
+   * @param {number} weekNumber - Week number
+   * @returns {Promise} Week entries grouped by day
+   */
+  getWeekEntries: async (weekNumber) => {
+    const response = await api.get(`/daily-entries/week/${weekNumber}`);
+    return response.data;
+  },
+
+  /**
+   * Get entries for a specific day
+   * @param {number} weekNumber - Week number
+   * @param {number} dayNumber - Day number (1-7)
+   * @returns {Promise} Day entries
+   */
+  getDayEntries: async (weekNumber, dayNumber) => {
+    const response = await api.get(`/daily-entries/day/${weekNumber}/${dayNumber}`);
+    return response.data;
+  },
+
+  /**
+   * Update an entry
+   * @param {string} id - Entry ID
+   * @param {Object} updates - Entry updates
+   * @returns {Promise} Updated entry
+   */
+  updateEntry: async (id, updates) => {
+    const response = await api.put(`/daily-entries/${id}`, updates);
+    return response.data;
+  },
+
+  /**
+   * Delete an entry
+   * @param {string} id - Entry ID
+   * @returns {Promise}
+   */
+  deleteEntry: async (id) => {
+    const response = await api.delete(`/daily-entries/${id}`);
+    return response.data;
+  },
+
+  /**
+   * Complete current week
+   * @returns {Promise}
+   */
+  completeWeek: async () => {
+    const response = await api.post('/daily-entries/complete-week');
+    return response.data;
+  },
+};
+
 export default api;
+

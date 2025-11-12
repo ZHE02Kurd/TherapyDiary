@@ -19,6 +19,12 @@ import ProfileScreen from '../screens/ProfileScreen';
 import DiaryEntryDetail from '../screens/DiaryEntryDetail';
 import AnalyticsScreen from '../screens/AnalyticsScreen';
 
+// New Week 1 screens
+import WeeklySessionScreen from '../screens/WeeklySessionScreen';
+import DailyTaskScreen from '../screens/DailyTaskScreen';
+import AddEntryScreen from '../screens/AddEntryScreen';
+import WeekProgressScreen from '../screens/WeekProgressScreen';
+
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
@@ -120,6 +126,27 @@ const AppNavigator = () => {
             name="DiaryDetail"
             component={DiaryEntryDetail}
             options={{ headerShown: true, title: 'Entry Detail' }}
+          />
+          {/* Week 1 Screens */}
+          <Stack.Screen
+            name="WeeklySession"
+            component={WeeklySessionScreen}
+            options={{ headerShown: true, title: 'Session' }}
+          />
+          <Stack.Screen
+            name="DailyTask"
+            component={DailyTaskScreen}
+            options={{ headerShown: true, title: 'Daily Task' }}
+          />
+          <Stack.Screen
+            name="AddEntry"
+            component={AddEntryScreen}
+            options={{ headerShown: true, title: 'Log Activity' }}
+          />
+          <Stack.Screen
+            name="WeekProgress"
+            component={WeekProgressScreen}
+            options={{ headerShown: true, title: 'Week Progress' }}
           />
         </Stack.Navigator>
       ) : (
