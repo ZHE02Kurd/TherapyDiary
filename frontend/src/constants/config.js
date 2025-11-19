@@ -1,5 +1,7 @@
 // App configuration
-export const API_BASE = 'http://localhost:3000/api';
+// Use your computer's IP address for Android/physical devices
+// Use localhost for iOS simulator or web
+export const API_BASE = 'http://172.31.162.229:3000/api';
 
 export const STORAGE_KEYS = {
   AUTH_TOKEN: '@therapy_diary_auth_token',
